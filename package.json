@@ -1,0 +1,58 @@
+{
+  "name": "colorful-consoles",
+  "displayName": "Colorful Consoles",
+  "description": "console.log quick, descriptive, easy and colorful",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.72.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [],
+    "keybindings": [
+      {
+        "key": "ctrl+z",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": {
+          "snippet": "console.log(`%c${CLIPBOARD} is - ${${CLIPBOARD}} - line# ${TM_LINE_NUMBER}  ${TM_FILENAME}`,'color: #${RANDOM_HEX}');"
+        }
+      },
+      {
+        "key": "ctrl+x",
+        "command": "extension.multiCommand.execute",
+        "args": {
+          "command": "multiCommand.debug"
+        }
+      },
+      {
+        "key": "alt+z",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": {
+          "snippet": "console.log(`%c <line# ${TM_LINE_NUMBER}  ${TM_FILENAME}>\\n  \\\\\\    ^__^\\n   \\\\\\   (oo)\\\\\\_______\\n       (__)\\\\\\       )\\\\\\/\\\\\\ \\n          ||----w |\\n          ||     ||`,'color: #${RANDOM_HEX}');"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.72.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "16.x",
+    "eslint": "^8.24.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.8.4",
+    "@vscode/test-electron": "^2.1.5"
+  }
+}
